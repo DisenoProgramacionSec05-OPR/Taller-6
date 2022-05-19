@@ -429,10 +429,6 @@ public class Libreria
 		return hayAutorEnVariasCategorias;
 	}
 	
-	
-	// =========================================
-	// PARTE 3: BORRAR LIBROS
-	// =========================================
 	public int borrarLibrosAutores(String autores) throws BorrarException
 	{
 		String[] autoresArray = autores.split(",");
@@ -469,6 +465,21 @@ public class Libreria
 			throw new BorrarException(existen, noExisten);
 		}
 	}
+
+	public void cambiarNombreCategoria(String nombreAntiguo, String nombreNuevo) throws Exception
+	{
+		Categoria categoriaAntigua = buscarCategoria(nombreAntiguo);
+		if (categoriaAntigua == null) {
+			throw new Exception("No se encontró ningun catalogo con dicho nombre.");
+
+		}
+		Categoria categoriaNueva = buscarCategoria(nombreNuevo);
+		if (categoriaNueva != null) {
+			throw new Exception("Ya existe un catalogo con el mismo nombre.");
+		}
+
+	}
+	
 	
 	
 	private void borrarLibros(HashMap<String, ArrayList<Libro>> paraBorrar)
