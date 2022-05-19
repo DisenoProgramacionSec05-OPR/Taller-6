@@ -381,7 +381,33 @@ public class InterfazLibreria extends JFrame
 		
 	}
 	
+	public void renombrarCategoria()
+	{
 
+		try
+		{
+			String mensajeInput1 = "Escriba el nombre del catalogo que desea cambiar: ";
+			String catalogo = JOptionPane.showInputDialog(this, mensajeInput1, "NombreCatalogo");
+
+			String mensajeInput2 = "Escriba el nuevo nombre para el catalogo: ";
+			String nuevoCatalogo = JOptionPane.showInputDialog(this, mensajeInput2, "NombreCatalogo");
+
+			if (catalogo!=null && catalogo.length()>0 && nuevoCatalogo!=null && nuevoCatalogo.length()>0  )
+			{
+				libreria.cambiarNombreCategoria(catalogo,nuevoCatalogo);
+				panelCategorias.actualizarCategorias(libreria.darCategorias());
+			}
+			else 
+			{
+				String mensajeError1 = "faltaron campos por diligenciar";
+				JOptionPane.showMessageDialog(this, mensajeError1, "Error al renombrar la categoria", JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
+		catch (Exception e)
+		{
+			String mensajeError2 = e.getMessage();
+			JOptionPane.showMessageDialog(this, mensajeError2, "Error al renombrar la categoria", JOptionPane.INFORMATION_MESSAGE);			
+		}
 	// ************************************************************************
 	// Main
 	// ************************************************************************
